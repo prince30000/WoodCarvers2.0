@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WOOD CARVERS — Handcrafted Wooden Decorative Artifacts</title>
+  <meta name="description" content="Handcrafted wooden pieces made to bring character to your space. Small to medium statues, wall hangings, picture frames, and artisanal gifts.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Top Bar Announcement -->
+  <div class="top-announcement">
+    <span>🪵 Ethically Sourced Solid Hardwoods • Free Courier Shipping on Orders Above ₹1,999 • 100% Handcrafted in India</span>
+  </div>
+
+  <!-- Main Navigation -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="brand-logo" onclick="navigateTo('home')">
+        <span class="logo-title">WOOD CARVERS</span>
+        <span class="logo-tagline">HANDCRAFTED TIMBER ARTIFACTS</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="javascript:void(0)" class="nav-link active" onclick="navigateTo('home')">Home</a>
+        <a href="javascript:void(0)" class="nav-link" onclick="filterByCategory('all')">Shop All</a>
+        <a href="javascript:void(0)" class="nav-link" onclick="filterByCategory('wall-hangings')">Wall Hangings</a>
+        <a href="javascript:void(0)" class="nav-link" onclick="filterByCategory('statues')">Statues</a>
+        <a href="javascript:void(0)" class="nav-link" onclick="filterByCategory('sculptures')">Sculptures</a>
+        <a href="javascript:void(0)" class="nav-link" onclick="filterByCategory('wooden-toys')">Toys</a>
+        <a href="javascript:void(0)" class="nav-link" onclick="filterByCategory('home-decor')">Home Décor</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Search -->
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Search handcrafted timber..." onkeyup="handleSearch(event)">
+        </div>
+
+        <!-- Wishlist button -->
+        <button class="icon-btn" onclick="openWishlist()" title="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge" id="wishlistBadge">0</span>
+        </button>
+
+        <!-- Cart button -->
+        <button class="icon-btn" onclick="openCart()" title="Shopping Bag">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="badge" id="cartBadge">0</span>
+        </button>
+
+        <!-- Account / Admin button -->
+        <div class="account-menu-container">
+          <button class="btn-account" onclick="toggleAccountMenu()">
+            <i class="fa-regular fa-user"></i>
+            <span id="userNameLabel">Sign In</span>
+          </button>
+          <div class="account-dropdown" id="accountDropdown">
+            <div id="loggedOutMenu">
+              <button onclick="openAuthModal('login')">Sign In</button>
+              <button onclick="openAuthModal('register')">Create Account</button>
+              <button onclick="demoLogin('admin')" class="demo-link">Demo: Admin Login 🔒</button>
+              <button onclick="demoLogin('customer')" class="demo-link">Demo: Customer Login</button>
+            </div>
+            <div id="loggedInMenu" style="display:none;">
+              <div class="user-greeting" id="userGreetingText">Hello, Aarav</div>
+              <button onclick="openOrdersModal()">My Orders & Tracking</button>
+              <button id="adminPortalBtn" onclick="openAdminPanel()" style="display:none; color: var(--gold); font-weight: bold;">
+                <i class="fa-solid fa-shield-halved"></i> Admin Operations Panel
+              </button>
+              <hr>
+              <button onclick="handleLogout()" style="color: #a33b32;">Sign Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main App Views -->
+  <main id="mainContent">
+    <!-- View: Home -->
+    <section id="viewHome">
+      <!-- Hero Banner -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <div class="hero-badge">PURE ARTISANAL WOODCRAFT</div>
+          <h1 class="hero-title">Handcrafted wooden pieces made to bring character to your space.</h1>
+          <p class="hero-desc">Individually chiselled from seasoned walnut, teak, sheesham, and rosewood. Heirloom sculptures, decorative wall hangings, and organic tabletop decor crafted by generational master woodworkers.</p>
+          <div class="hero-cta-group">
+            <button class="btn btn-gold" onclick="filterByCategory('all')">
+              <i class="fa-solid fa-compass"></i> Explore Collection
+            </button>
+            <button class="btn btn-outline" onclick="scrollToCraftsmanship()">
+              Our Woodworking Story
+            </button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-img-frame">
+            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80" alt="Walnut Medallion">
+            <div class="hero-card-tag">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Tree of Life Wall Medallion • Solid Walnut</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust Strip -->
+      <div class="trust-strip">
+        <div class="trust-item"><i class="fa-solid fa-tree"></i> 100% Seasoned Hardwood</div>
+        <div class="trust-item"><i class="fa-solid fa-hand-sparkles"></i> Hand-Chiseled Detailing</div>
+        <div class="trust-item"><i class="fa-solid fa-shield-cat"></i> Eco-Armor Zero-Damage Packaging</div>
+        <div class="trust-item"><i class="fa-solid fa-lock"></i> 256-Bit Razorpay Payments</div>
+      </div>
+
+      <!-- Categories Showcase -->
+      <section class="section-container">
+        <div class="section-header">
+          <div>
+            <span class="sub-heading">CURATED SELECTION</span>
+            <h2 class="main-heading">Explore by Category</h2>
+          </div>
+          <button class="link-btn" onclick="filterByCategory('all')">View All <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="category-grid" id="categoryGridContainer">
+          <!-- Dynamically injected categories -->
+        </div>
+      </section>
+
+      <!-- Featured Pieces -->
+      <section class="section-container bg-cream">
+        <div class="section-header">
+          <div>
+            <span class="sub-heading">MASTERPIECES</span>
+            <h2 class="main-heading">Featured Wooden Artifacts</h2>
+          </div>
+          <button class="link-btn" onclick="filterByCategory('all')">See All Featured <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="products-grid" id="featuredProductsContainer">
+          <!-- Dynamically injected products -->
+        </div>
+      </section>
+
+      <!-- Craftsmanship Spotlight Story -->
+      <section class="craftsmanship-banner" id="craftsmanshipStory">
+        <div class="story-img">
+          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="Sculpting wood">
+        </div>
+        <div class="story-text">
+          <span class="sub-heading gold-text">THE WOOD CARVERS PHILOSOPHY</span>
+          <h2>Where Raw Timber Becomes Timeless Art</h2>
+          <p>Every piece in our studio begins as a carefully chosen block of kiln-seasoned hardwood. Our sculptors work exclusively with hand-chisels, gouges, and rasps, following the organic grain lines of the tree to release sculptures that carry warmth, texture, and natural spirit.</p>
+          <p>We believe wooden decor should have soul. No plastic resins, no pressed fiberboards—only authentic, living grain treated with natural beeswax and botanical oils.</p>
+          <button class="btn btn-gold" onclick="filterByCategory('sculptures')">Discover Sculptures</button>
+        </div>
+      </section>
+
+      <!-- Best Sellers -->
+      <section class="section-container">
+        <div class="section-header">
+          <div>
+            <span class="sub-heading">COLLECTOR FAVORITES</span>
+            <h2 class="main-heading">Best Selling Pieces</h2>
+          </div>
+          <button class="link-btn" onclick="filterByCategory('all')">View Catalog <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="products-grid" id="bestsellersContainer">
+          <!-- Dynamically injected products -->
+        </div>
+      </section>
+    </section>
+
+    <!-- View: Catalog / Shop -->
+    <section id="viewShop" style="display:none;">
+      <div class="shop-header">
+        <div class="shop-header-inner">
+          <span class="sub-heading gold-text">ARTISANAL CATALOG</span>
+          <h1 id="shopCategoryTitle">Handcrafted Wooden Pieces</h1>
+          <p id="shopCategoryDesc">Small to medium handcrafted wooden decorative artifacts sculpted from solid hardwoods.</p>
+        </div>
+      </div>
+
+      <div class="shop-layout">
+        <!-- Sidebar Filters -->
+        <aside class="shop-sidebar">
+          <div class="sidebar-block">
+            <h3>Categories</h3>
+            <ul class="filter-list" id="sidebarCategoryList">
+              <!-- Dynamically injected -->
+            </ul>
+          </div>
+
+          <div class="sidebar-block">
+            <h3>Availability</h3>
+            <label class="checkbox-label">
+              <input type="checkbox" id="inStockCheckbox" onchange="applyShopFilters()">
+              <span>In Stock Only</span>
+            </label>
+          </div>
+
+          <div class="sidebar-block">
+            <h3>Sort By</h3>
+            <select id="sortSelect" onchange="applyShopFilters()" class="select-input">
+              <option value="newest">Newest Releases</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="popularity">Most Popular</option>
+              <option value="rating">Highest Rated</option>
+            </select>
+          </div>
+        </aside>
+
+        <!-- Products Container -->
+        <div class="shop-main">
+          <div class="shop-results-bar">
+            <span id="resultsCountText">Showing products</span>
+          </div>
+          <div class="products-grid" id="shopProductsGrid">
+            <!-- Dynamically injected -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- View: Admin Operations Panel -->
+    <section id="viewAdmin" style="display:none;" class="admin-panel-view">
+      <div class="admin-container">
+        <aside class="admin-sidebar">
+          <div class="admin-brand">
+            <h2>WOOD CARVERS</h2>
+            <span class="admin-badge">ADMIN CONSOLE</span>
+          </div>
+          <nav class="admin-nav">
+            <button class="admin-nav-item active" onclick="switchAdminTab('dashboard')">
+              <i class="fa-solid fa-chart-line"></i> Dashboard
+            </button>
+            <button class="admin-nav-item" onclick="switchAdminTab('products')">
+              <i class="fa-solid fa-tree"></i> Product Management
+            </button>
+            <button class="admin-nav-item" onclick="switchAdminTab('orders')">
+              <i class="fa-solid fa-boxes-packing"></i> Customer Orders
+            </button>
+            <button class="admin-nav-item" onclick="switchAdminTab('customers')">
+              <i class="fa-solid fa-users"></i> Customers
+            </button>
+            <button class="admin-nav-item" onclick="navigateTo('home')">
+              <i class="fa-solid fa-arrow-left"></i> Live Storefront
+            </button>
+          </nav>
+        </aside>
+
+        <section class="admin-content">
+          <!-- Admin Tab: Dashboard -->
+          <div id="adminTabDashboard">
+            <div class="admin-top-bar">
+              <div>
+                <h2>Studio Operations Dashboard</h2>
+                <p>Live metrics, revenue tracking, inventory alerts, and order workflows.</p>
+              </div>
+              <button class="btn btn-gold" onclick="openProductModal()">
+                <i class="fa-solid fa-plus"></i> Add Product
+              </button>
+            </div>
+
+            <!-- KPI Metric Cards -->
+            <div class="kpi-grid" id="adminKpiGrid">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- Recent Orders table -->
+            <div class="admin-card">
+              <h3>Recent Orders</h3>
+              <div class="table-responsive">
+                <table class="data-table" id="adminRecentOrdersTable">
+                  <thead>
+                    <tr>
+                      <th>Order #</th>
+                      <th>Customer</th>
+                      <th>Items</th>
+                      <th>Total</th>
+                      <th>Payment</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin Tab: Products -->
+          <div id="adminTabProducts" style="display:none;">
+            <div class="admin-top-bar">
+              <h2>Product Catalog Management</h2>
+              <button class="btn btn-gold" onclick="openProductModal()"><i class="fa-solid fa-plus"></i> Add Product</button>
+            </div>
+            <div class="admin-card">
+              <div class="table-responsive">
+                <table class="data-table" id="adminProductsTable">
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Title & SKU</th>
+                      <th>Price</th>
+                      <th>Stock</th>
+                      <th>Material</th>
+                      <th>Active</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin Tab: Orders -->
+          <div id="adminTabOrders" style="display:none;">
+            <div class="admin-top-bar">
+              <h2>Customer Orders Management</h2>
+            </div>
+            <div class="admin-card">
+              <div class="table-responsive">
+                <table class="data-table" id="adminAllOrdersTable">
+                  <thead>
+                    <tr>
+                      <th>Order #</th>
+                      <th>Date</th>
+                      <th>Customer</th>
+                      <th>Items</th>
+                      <th>Amount</th>
+                      <th>Current Status</th>
+                      <th>Update Status & Tracking</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin Tab: Customers -->
+          <div id="adminTabCustomers" style="display:none;">
+            <div class="admin-top-bar">
+              <h2>Registered Customers Directory</h2>
+            </div>
+            <div class="admin-card">
+              <div class="table-responsive">
+                <table class="data-table" id="adminCustomersTable">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Addresses</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- Product Quick View / Details Modal -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-content product-modal-content">
+      <button class="modal-close-btn" onclick="closeProductModal()">&times;</button>
+      <div class="product-modal-grid">
+        <div class="product-modal-gallery">
+          <img id="modalPrimaryImg" src="" alt="Handcrafted product">
+        </div>
+        <div class="product-modal-details">
+          <span class="product-cat-tag" id="modalCategoryTag">WALL HANGINGS</span>
+          <h2 id="modalProductTitle">Hand-Carved Walnut Tree of Life</h2>
+          <div class="product-rating" id="modalRatingText">★ 4.9 (38 reviews)</div>
+          <div class="price-container">
+            <span class="current-price" id="modalDiscountedPrice">₹2,974</span>
+            <span class="original-price" id="modalOriginalPrice">₹3,499</span>
+            <span class="discount-badge" id="modalDiscountBadge">-15%</span>
+          </div>
+          <div class="stock-indicator" id="modalStockIndicator">✓ In Stock & Ready to Dispatch</div>
+          <p class="product-desc" id="modalProductDesc"></p>
+
+          <div class="spec-list">
+            <div><strong>Material:</strong> <span id="modalMaterial">Seasoned Dark Walnut Wood</span></div>
+            <div><strong>Dimensions:</strong> <span id="modalDimensions">40 x 40 x 3.5 cm</span></div>
+            <div><strong>Weight:</strong> <span id="modalWeight">1450 g</span></div>
+            <div><strong>Care:</strong> <span id="modalCare">Wipe with soft cloth. Nourish with beeswax.</span></div>
+          </div>
+
+          <div class="modal-actions-row">
+            <div class="qty-selector">
+              <button onclick="adjustModalQty(-1)">-</button>
+              <span id="modalQtyDisplay">1</span>
+              <button onclick="adjustModalQty(1)">+</button>
+            </div>
+            <button class="btn btn-espresso flex-1" onclick="addModalItemToCart()">
+              <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+            </button>
+            <button class="btn btn-gold flex-1" onclick="buyModalItemNow()">
+              <i class="fa-solid fa-bolt"></i> Buy Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shopping Bag Slide-out Drawer -->
+  <div class="cart-drawer-overlay" id="cartOverlay" onclick="closeCart(event)">
+    <div class="cart-drawer" onclick="event.stopPropagation()">
+      <div class="cart-header">
+        <h3><i class="fa-solid fa-bag-shopping"></i> Artisanal Shopping Bag</h3>
+        <button class="drawer-close-btn" onclick="closeCart()">&times;</button>
+      </div>
+
+      <div class="free-shipping-progress" id="freeShippingBanner">
+        <span>Add items to unlock Free Express Courier</span>
+      </div>
+
+      <div class="cart-items-list" id="cartItemsList">
+        <!-- Injected -->
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-summary-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotalText">₹0</span>
+        </div>
+        <div class="cart-summary-row">
+          <span>Packaging & Courier</span>
+          <span id="cartShippingText">FREE</span>
+        </div>
+        <hr>
+        <div class="cart-summary-row total-row">
+          <span>Total Payable</span>
+          <span id="cartTotalText">₹0</span>
+        </div>
+        <button class="btn btn-gold btn-block" onclick="startCheckout()">
+          <i class="fa-solid fa-lock"></i> Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-content checkout-modal-content">
+      <button class="modal-close-btn" onclick="closeCheckoutModal()">&times;</button>
+      <h2>Artisanal Checkout</h2>
+      <p class="subtitle">Complete your delivery address and payment verification.</p>
+
+      <form id="checkoutForm" onsubmit="handlePlaceOrder(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="chkName" required placeholder="Full Name">
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="chkPhone" required placeholder="10-digit mobile number">
+          </div>
+          <div class="form-group full-width">
+            <label>Street Address *</label>
+            <input type="text" id="chkStreet" required placeholder="Flat, house no., street name">
+          </div>
+          <div class="form-group">
+            <label>City *</label>
+            <input type="text" id="chkCity" required placeholder="e.g. Bengaluru">
+          </div>
+          <div class="form-group">
+            <label>PIN Code *</label>
+            <input type="text" id="chkPin" required placeholder="e.g. 560038">
+          </div>
+        </div>
+
+        <div class="payment-selection-box">
+          <label class="radio-card">
+            <input type="radio" name="paymentMethod" value="RAZORPAY" checked>
+            <div>
+              <strong>Razorpay (UPI, Credit/Debit, NetBanking)</strong>
+              <small>Encrypted 256-bit cryptographic payment verification</small>
+            </div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="paymentMethod" value="COD">
+            <div>
+              <strong>Cash on Delivery (COD)</strong>
+              <small>Pay in cash or UPI upon courier arrival</small>
+            </div>
+          </label>
+        </div>
+
+        <div class="checkout-actions">
+          <button type="button" class="btn btn-outline" onclick="closeCheckoutModal()">Back to Bag</button>
+          <button type="submit" class="btn btn-gold" id="btnPlaceOrder">
+            <i class="fa-solid fa-check"></i> Confirm & Pay <span id="chkPayAmount"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Orders & Tracking Modal -->
+  <div class="modal-overlay" id="ordersModal">
+    <div class="modal-content orders-modal-content">
+      <button class="modal-close-btn" onclick="closeOrdersModal()">&times;</button>
+      <h2>My Orders & Visual Tracking</h2>
+      <div id="ordersListContainer"></div>
+    </div>
+  </div>
+
+  <!-- Auth Modal (Sign in / Register) -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-content auth-modal-content">
+      <button class="modal-close-btn" onclick="closeAuthModal()">&times;</button>
+      <div class="brand-logo center">
+        <span class="logo-title">WOOD CARVERS</span>
+      </div>
+      <h3 id="authModalTitle" style="text-align:center; margin: 12px 0 20px;">Sign In to Your Account</h3>
+
+      <form id="authForm" onsubmit="handleAuthSubmit(event)">
+        <div class="form-group" id="authNameGroup" style="display:none;">
+          <label>Full Name</label>
+          <input type="text" id="authName" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="authEmail" required placeholder="name@domain.com">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="authPassword" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn btn-espresso btn-block" id="authSubmitBtn" style="margin-top: 16px;">
+          Sign In
+        </button>
+      </form>
+
+      <div class="auth-toggle-footer">
+        <span id="authTogglePrompt">Don't have an account?</span>
+        <a href="javascript:void(0)" onclick="toggleAuthMode()" id="authToggleLink">Create Account</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Product Add/Edit Modal -->
+  <div class="modal-overlay" id="adminProductModal">
+    <div class="modal-content product-edit-modal">
+      <button class="modal-close-btn" onclick="closeAdminProductModal()">&times;</button>
+      <h2 id="adminProductModalTitle">Add New Wooden Product</h2>
+      <form id="adminProductForm" onsubmit="handleAdminProductSave(event)">
+        <input type="hidden" id="editProductId">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Product Title *</label>
+            <input type="text" id="pTitle" required placeholder="e.g. Handcrafted Teak Mandala">
+          </div>
+          <div class="form-group">
+            <label>SKU *</label>
+            <input type="text" id="pSku" required placeholder="e.g. WC-WH-005">
+          </div>
+          <div class="form-group">
+            <label>Category *</label>
+            <select id="pCategory" class="select-input"></select>
+          </div>
+          <div class="form-group">
+            <label>Price (₹) *</label>
+            <input type="number" id="pPrice" required placeholder="2499">
+          </div>
+          <div class="form-group">
+            <label>Discount (%)</label>
+            <input type="number" id="pDiscount" placeholder="10">
+          </div>
+          <div class="form-group">
+            <label>Stock Count *</label>
+            <input type="number" id="pStock" required placeholder="15">
+          </div>
+          <div class="form-group full-width">
+            <label>Image URL (Cloudinary / Web)</label>
+            <input type="url" id="pImageUrl" required placeholder="https://images.unsplash.com/...">
+          </div>
+          <div class="form-group full-width">
+            <label>Description *</label>
+            <textarea id="pDesc" rows="3" required placeholder="Detailed artisanal story..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Timber Material</label>
+            <input type="text" id="pMaterial" placeholder="Seasoned Dark Walnut">
+          </div>
+          <div class="form-group">
+            <label>Dimensions (L x W x H cm)</label>
+            <input type="text" id="pDimensions" placeholder="30 x 30 x 3 cm">
+          </div>
+        </div>
+        <div class="form-actions" style="margin-top: 20px; text-align: right;">
+          <button type="button" class="btn btn-outline" onclick="closeAdminProductModal()">Cancel</button>
+          <button type="submit" class="btn btn-gold">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-col brand-col">
+        <div class="brand-logo">
+          <span class="logo-title white-text">WOOD CARVERS</span>
+          <span class="logo-tagline gold-text">ARTISANAL HANDCRAFTED TIMBER</span>
+        </div>
+        <p>Handcrafted wooden pieces made to bring character to your space. Small to medium decorative artifacts created with patience, precision, and passion.</p>
+        <p class="craft-pride"><i class="fa-solid fa-award"></i> Crafted with Pride by Master Artisans in India</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>CATEGORIES</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('wall-hangings')">Wall Hangings</a></li>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('wooden-toys')">Wooden Toys</a></li>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('frames')">Photo Frames</a></li>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('statues')">Statues & Figurines</a></li>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('sculptures')">Abstract Sculptures</a></li>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('home-decor')">Home Décor</a></li>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('gifts')">Artisanal Gifts</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>CUSTOMER CARE</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="openOrdersModal()">Track Your Order</a></li>
+          <li><a href="javascript:void(0)">Hardwood Care Guide</a></li>
+          <li><a href="javascript:void(0)">Eco-Packaging Standards</a></li>
+          <li><a href="javascript:void(0)">7-Day Easy Returns</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>ADMINISTRATION</h4>
+        <p>Store owners can access the operations console below:</p>
+        <button class="btn btn-outline-white btn-sm" onclick="openAdminPanel()">
+          <i class="fa-solid fa-shield-halved"></i> Launch Admin Panel
+        </button>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 WOOD CARVERS. All rights reserved. Handcrafted Decorative Timber E-Commerce.</span>
+      <span>Razorpay Secured • Cloudinary Hosted • FCM Enabled</span>
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
